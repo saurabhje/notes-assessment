@@ -42,22 +42,24 @@ Notes-Assessment
 ## Run locally
 
 1. Clone the repo:
-`git clone https://github.com/your-username/Notes-Assessment.git`
+```git clone https://github.com/your-username/Notes-Assessment.git```
 
 2. Navigate to project directory:
-`cd notes-assessment`
+```cd notes-assessment```
 
 3. Install Dependencies:
-`npm install`
+```npm install```
 
 4. Create Environment File:
-`cp .env.example .env`
-MONGODB_URI = your mongodb connection 
+```cp .env.example .env```
+  MONGODB_URI = your mongodb connection 
 
 5. Run the Application:
-`npm start`
+```npm start```
 
-6. Access the api at 'http://localhost:3000'
+6. Access the api at http://localhost:3000
+
+
 ## Note Schema
 
 The structure of a note in the API is defined by the following schema:
