@@ -1,13 +1,15 @@
 # Notes Assessment
+
 Simple Note-Taking RESTful API Documentation
 
 ### Project Structure
+
 ```
 Notes-Assessment
 │
 ├── src
 │   ├── controllers
-│   │   ├── CreateNote.js 
+│   │   ├── CreateNote.js
 |   |   ├── deleteNote.js
 |   |   ├── getAllNotes.js
 |   |   ├── getSingleNote.js
@@ -19,16 +21,16 @@ Notes-Assessment
 │   ├── routes
 │   │   └── noteRoutes.js
 │   │
-│   ├── middleware  
+│   ├── middleware
 │   │   ├── basicAuth.js
 │   │   ├── noteValidation.js
 │   │   └── errorHandlingMiddleware.js
 │   │
 │   │
 │   └── app.js
-│  
+│
 ├── tests
-│   ├── CreateNote.test.js 
+│   ├── CreateNote.test.js
 |   ├── deleteNote.test.js
 |   ├── getAllNotes.test.js
 |   ├── getSingleNote.test.js
@@ -36,34 +38,44 @@ Notes-Assessment
 │
 ├── server.js
 ├── .env
-└── package.json 
+└── package.json
 ```
 
 ## Run locally
 
 1. Clone the repo:
-```git clone https://github.com/your-username/Notes-Assessment.git
+
+```
+git clone https://github.com/your-username/Notes-Assessment.git
 ```
 
 2. Navigate to project directory:
-```cd notes-assessment
+
+```
+cd notes-assessment
 ```
 
 3. Install Dependencies:
-```npm install
+
+```
+npm install
 ```
 
 4. Create Environment File:
-```cp .env.example .env
+
 ```
-  MONGODB_URI = your mongodb connection 
+cp .env.example .env
+```
+
+MONGODB_URI = your mongodb connection
 
 5. Run the Application:
-```npm start
+
+```
+npm start
 ```
 
 6. Access the api at http://localhost:3000
-
 
 ## Note Schema
 
@@ -84,16 +96,18 @@ The structure of a note in the API is defined by the following schema:
 - MongoDB is used as the database.
 - Timestamps (`createdAt` and `updatedAt`) are automatically generated for each note.
 
-
 ## Endpoints
 
 ### 1. Create Note
 
 - **Endpoint:**
+
   - `POST /create-note`
 
 - **Request:**
+
   - Headers:
+
     - `Content-Type: application/json`
     - `Authorization: Basic base64(username:password)` (Optional)
 
@@ -104,6 +118,7 @@ The structure of a note in the API is defined by the following schema:
       "content": "Note Content"
     }
     ```
+
 - **Response:**
   - Status Code: `201 Created`
   - Body:
@@ -119,10 +134,13 @@ The structure of a note in the API is defined by the following schema:
       }
     }
     ```
-    
+
 ### 2. Retrieve Notes
+
     this endpoint is used to retrieve all the notes from the database
+
 - **Endpoint:**
+
   - `GET /notes`
 
   - **Response:**
@@ -137,16 +155,17 @@ The structure of a note in the API is defined by the following schema:
           "content": "Note Content",
           "createdAt": "timestamp",
           "updatedAt": "timestamp"
-        },
+        }
         // ... additional notes
       ]
     }
     ```
+
 ### 3. Retrieve Single Note
 
 - **Endpoint:**
-  - `GET /notes/:id`
 
+  - `GET /notes/:id`
 
 - **Response:**
   - Status Code: `200 OK`
@@ -167,10 +186,13 @@ The structure of a note in the API is defined by the following schema:
 ### 4. Update Note
 
 - **Endpoint:**
+
   - `PUT /notes/:id`
 
 - **Request:**
+
   - Headers:
+
     - `Content-Type: application/json`
     - `Authorization: Basic base64(username:password)` (Optional)
 
@@ -181,6 +203,7 @@ The structure of a note in the API is defined by the following schema:
       "content": "Updated Content"
     }
     ```
+
 - **Response:**
   - Status Code: `200 OK`
   - Body:
@@ -197,13 +220,14 @@ The structure of a note in the API is defined by the following schema:
     }
     ```
 
-
 ### 5. Delete Note
 
 - **Endpoint:**
+
   - `DELETE /notes/:id`
 
 - **Request:**
+
   - Headers:
     - `Authorization: Basic base64(username:password)` (Optional)
 
@@ -219,37 +243,38 @@ The structure of a note in the API is defined by the following schema:
 
 ## Authentication
 
-Basic-Auth is used securing endpoints 
-`/api/create-note` 
+Basic-Auth is used securing endpoints
+`/api/create-note`
 `/api/delete/:id`
 `/api/update/:id`
 
 Credentials
-    Username: admin
-    Password: wan1ting
-
+Username: admin
+Password: wan1ting
 
 ## Error Handling
 
 The API returns appropriate error responses for different scenarios. Detailed error messages can be found in the `error` field of the response.
 
 - **Status Code: `400 Bad Request`**
+
   - Invalid input or validation failure.
 
 - **Status Code: `401 Unauthorized`**
+
   - Authorization header missing or incorrect credentials.
 
 - **Status Code: `404 Not Found`**
+
   - Attempt to access or modify a non-existent note.
 
 - **Status Code: `500 Internal Server Error`**
   - General server error.
 
-
 ## Testing
 
 For testing the endpoints, the following libraries are utilized:
+
 1. Jest
 2. SuperTest - It enables the making of HTTP requests and assertion of responses
-3. MongoDB-memory-server - MongoDB-memory-server is a utility utilized for creating an in-memory MongoDB database, serving as a mock for saving, deleting, and retrieving data during tests. 
-
+3. MongoDB-memory-server - MongoDB-memory-server is a utility utilized for creating an in-memory MongoDB database, serving as a mock for saving, deleting, and retrieving data during tests.
